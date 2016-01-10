@@ -20,6 +20,7 @@ client.getMonitors({
 }, function(err, response) {
     // The response will be the javascript object
 });
+```
 
 ## Installation
 
