@@ -1,0 +1,155 @@
+{
+    "stat": "ok",
+    "offset": "0",
+    "limit": "50",
+    "total": "2",
+    "monitors": {
+        "monitor": [
+            {
+                "id": "128795",
+                "friendlyname": "Yahoo",
+                "url": "http://www.yahoo.com/",
+                "type": "1",
+                "subtype": "",
+                "keywordtype": "0",
+                "keywordvalue": "",
+                "httpusername": "",
+                "httppassword": "",
+                "port": "",
+                "interval": "300",
+                "status": "2",
+                "alltimeuptimeratio": "99.98",
+                "customuptimeratio": "100.00",
+                "alertcontact": [
+                    {
+                        "id": "4631",
+                        "type": "2",
+                        "value": "uptime@domain.com",
+                        "threshold": "2",
+                        "recurrence": "1"
+                    },
+                    {
+                        "id": "2420",
+                        "type": "3",
+                        "value": "umutm",
+                        "threshold": "0",
+                        "recurrence": "0"
+                    }
+                ],
+                "log": [
+                    {
+                        "type": "2",
+                        "datetime": "09/25/2011 16:12:44",
+                        "alertcontact": [
+                            {
+                                "type": "0",
+                                "value": "uptime@domain.com"
+                            },
+                            {
+                                "type": "3",
+                                "value": "umutm"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "1",
+                        "datetime": "09/25/2011 16:11:44",
+                        "alertcontact": [
+                            {
+                                "type": "0",
+                                "value": "uptime@domain.com"
+                            },
+                            {
+                                "type": "3",
+                                "value": "umutm"
+                            }
+                        ]
+                    }
+                ],
+                "responsetime": [
+                    {
+                        "datetime": "02/04/2014 11:30:41",
+                        "value": "405"
+                    },
+                    {
+                        "datetime": "02/04/2014 12:00:41",
+                        "value": "516"
+                    },
+                    {
+                        "datetime": "02/04/2014 12:30:41",
+                        "value": "780"
+                    }
+                ]
+            },
+            {
+                "id": "128796",
+                "friendlyname": "domain",
+                "url": "http://www.domain.com/",
+                "type": "1",
+                "subtype": "",
+                "keywordtype": "0",
+                "keywordvalue": "",
+                "httpusername": "",
+                "httppassword": "",
+                "port": "",
+                "interval": "300",
+                "status": "2",
+                "alltimeuptimeratio": "99.94",
+                "customtimeuptimeratio": "89.51",
+                "alertcontact": [
+                    {
+                        "id": "2420",
+                        "type": "3",
+                        "value": "umutm",
+                        "threshold": "2",
+                        "recurrence": "1"
+                    }
+                ],
+                "log": [
+                    {
+                        "type": "2",
+                        "datetime": "08/30/2011 16:11:15",
+                        "alertcontact": [
+                            {
+                                "type": "0",
+                                "value": "uptime@domain.com"
+                            },
+                            {
+                                "type": "3",
+                                "value": "umutm"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "1",
+                        "datetime": "08/30/2011 16:09:30",
+                        "alertcontact": [
+                            {
+                                "type": "0",
+                                "value": "uptime@domain.com"
+                            },
+                            {
+                                "type": "3",
+                                "value": "umutm"
+                            }
+                        ]
+                    }
+                ],
+                "responsetime": [
+                    {
+                        "datetime": "02/04/2014 11:48:41",
+                        "value": "405"
+                    },
+                    {
+                        "datetime": "02/04/2014 12:18:41",
+                        "value": "516"
+                    },
+                    {
+                        "datetime": "02/04/2014 12:48:41",
+                        "value": "780"
+                    }
+                ]
+            }
+        ]
+    }
+}

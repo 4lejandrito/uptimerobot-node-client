@@ -1,0 +1,25 @@
+{
+  "name": "uptimerobot-client",
+  "version": "0.0.1",
+  "description": "Uptimerobot API client",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "uptimerobot",
+    "api",
+    "client"
+  ],
+  "author": "Alejandro Tardin",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "nock": "^5.2.1"
+  },
+  "dependencies": {
+    "request": "^2.67.0",
+    "underscore": "^1.8.3"
+  }
+}
