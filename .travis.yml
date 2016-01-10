@@ -1,9 +1,17 @@
 language: node_js
 node_js:
-  - "5"
-  - "4.1"
-  - "4.0"
-  - "0.12"
-  - "0.11"
-  - "0.10"
-  - "iojs"
+- '5'
+- '4.1'
+- '4.0'
+- '0.12'
+- '0.11'
+- '0.10'
+- iojs
+deploy:
+  provider: npm
+  email: alejandro@tardin.com
+  api_key:
+    secure: k/6LlwuqyFtJAohVkdvCoBkbyNoGyIwE52zuqd5+p51++VWeAeNMSDjf8ZrU5XiFryu5RoLFw4ViZ6+DHH4lrozJh2JeiohMFCeQDpeSZp1P+gB/uXd+wA5G/sUNRxF/sgIKsdVzUPGn5Mc5UUri+sbzaHmmvBh53iLwtqMJx3iRpE+DYGjSBssaqoqvbvLO69fm7/sUxJ03JVyGMh1EoMyReZygQYWmyRWTkuxDS8G+5atiRaTs3aZTZ51fjSbXJIUaGNVo82SOdkmU7qUgsbztTOYigyD3uca/7EPIW7UuzpvHoMEpdLU361bs3d4hh8PJEm9cqgugvBT2lKDfYyE/5Aqxn8l6QzlL/U+9s8PjAXLpIlODCxLjp3fAUVHrcH4tYaS/I58ubUjy3Tj8Z3MgCfAa9Wbm8bGObSKCYmCXJKCNNy9sUYx/Czaf3soJvA2sEvHKa4pCsf5IHi8v/ljy17PfqzBaRP72K4vxbcjeATGPEc8NDbNnS7ZmgZfLlNBqnOd7pTc18U46Ilk/bjFY9rU1UciX6bJgpC46Oj7YOHJoeBEpUkz+chmXJm4O1B7NsNIsFKmkIvbhXO6qSsqatlw68fNfs6UVUqOknHaU9R1/56tJmVQ2ZuNGlU9pB82q/kTLODtgGBew2nlNJajnXE4e6xh68M18Xmjw5JA=
+  on:
+    tags: true
+    repo: 4lejandrito/uptimerobot-node-client
