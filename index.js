@@ -29,7 +29,9 @@ var Client = module.exports = function(apiKey) {
         }, function(err, res, body) {
             try {
                 var data = parseJSONResponse(body);
-                cb(data.stat === 'fail' ? data.message : null, data);
+                process.nextTick(function() {
+                    cb(data.stat === 'fail' ? data.message : null, data);
+                });
             } catch(ex) {
                 cb(err || ex, body);
             }
