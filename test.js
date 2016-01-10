@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var Client = require('.');
+var Client = require('./index');
 var nock = require('nock');
 
 describe('Uptimerobot client', function() {
