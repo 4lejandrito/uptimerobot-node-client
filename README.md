@@ -1,4 +1,4 @@
-uptimerobot-client
+uptimerobot-node-client
 ==============
 
 [![NPM Version](https://badge.fury.io/js/uptimerobot-client.svg)](https://npmjs.org/package/uptimerobot-client)
