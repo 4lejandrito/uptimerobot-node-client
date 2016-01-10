@@ -1,6 +1,6 @@
 {
   "name": "uptimerobot-client",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Uptimerobot API client",
   "main": "index.js",
   "engines": {
