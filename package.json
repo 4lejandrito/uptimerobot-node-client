@@ -16,6 +16,10 @@
     "client"
   ],
   "author": "Alejandro Tardin",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/4lejandrito/uptimerobot-node-client.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.4.1",
