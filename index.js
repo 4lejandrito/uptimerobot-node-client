@@ -12,16 +12,17 @@ var getQueryParams = function(options) {
 var Client = module.exports = function(apiKey) {
 
     var url = 'https://api.uptimerobot.com';
+    var commonParams = {
+        apiKey: apiKey,
+        format: 'json',
+        noJsonCallback: 1
+    };
 
     this.getMonitors = function(options, cb) {
         if (!cb) cb = options;
 
         request.get(url + '/getMonitors', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
@@ -38,11 +39,7 @@ var Client = module.exports = function(apiKey) {
         if (!cb) cb = options;
 
         request.get(url + '/newMonitor', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
@@ -59,11 +56,7 @@ var Client = module.exports = function(apiKey) {
         if (!cb) cb = options;
 
         request.get(url + '/editMonitor', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
@@ -80,11 +73,7 @@ var Client = module.exports = function(apiKey) {
         if (!cb) cb = options;
 
         request.get(url + '/deleteMonitor', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
@@ -101,11 +90,7 @@ var Client = module.exports = function(apiKey) {
         if (!cb) cb = options;
 
         request.get(url + '/resetMonitor', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
@@ -122,11 +107,7 @@ var Client = module.exports = function(apiKey) {
         if (!cb) cb = options;
 
         request.get(url + '/getAlertContacts', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
@@ -143,11 +124,7 @@ var Client = module.exports = function(apiKey) {
         if (!cb) cb = options;
 
         request.get(url + '/newAlertContact', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
@@ -164,11 +141,7 @@ var Client = module.exports = function(apiKey) {
         if (!cb) cb = options;
 
         request.get(url + '/deleteAlertContact', {
-            qs: _.extend({
-                apiKey: apiKey,
-                format: 'json',
-                noJsonCallback: 1
-            }, getQueryParams(options))
+            qs: _.extend(commonParams, getQueryParams(options))
         }, function(err, res, body) {
             try {
                 var data = JSON.parse(body);
