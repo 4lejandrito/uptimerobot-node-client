@@ -1,15 +1,6 @@
 var request = require('request');
 var _ = require('underscore');
 
-// If you only need the raw JSON response without a function wrapper, send the noJsonCallback parameter with a value of 1
-var parseJSONResponse = function(response) {
-    if(response.indexOf('jsonUptimeRobotApi') !== -1){
-        var regex = /^jsonUptimeRobotApi\((.*)\)$/;
-        return JSON.parse(response.match(regex)[1]);
-    }
-    return JSON.parse(response);
-};
-
 var getQueryParams = function(options) {
     return _.mapObject(options, function(val, key) {
         if (_.isArray(val)) return val.join('-');
@@ -29,10 +20,11 @@ var Client = module.exports = function(apiKey) {
             qs: _.extend({
                 apiKey: apiKey,
                 format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });
@@ -48,11 +40,12 @@ var Client = module.exports = function(apiKey) {
         request.get(url + '/newMonitor', {
             qs: _.extend({
                 apiKey: apiKey,
-                format: 'json'
+                format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });
@@ -68,11 +61,12 @@ var Client = module.exports = function(apiKey) {
         request.get(url + '/editMonitor', {
             qs: _.extend({
                 apiKey: apiKey,
-                format: 'json'
+                format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });
@@ -88,11 +82,12 @@ var Client = module.exports = function(apiKey) {
         request.get(url + '/deleteMonitor', {
             qs: _.extend({
                 apiKey: apiKey,
-                format: 'json'
+                format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });
@@ -108,11 +103,12 @@ var Client = module.exports = function(apiKey) {
         request.get(url + '/resetMonitor', {
             qs: _.extend({
                 apiKey: apiKey,
-                format: 'json'
+                format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });
@@ -128,11 +124,12 @@ var Client = module.exports = function(apiKey) {
         request.get(url + '/getAlertContacts', {
             qs: _.extend({
                 apiKey: apiKey,
-                format: 'json'
+                format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });
@@ -148,11 +145,12 @@ var Client = module.exports = function(apiKey) {
         request.get(url + '/newAlertContact', {
             qs: _.extend({
                 apiKey: apiKey,
-                format: 'json'
+                format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });
@@ -168,11 +166,12 @@ var Client = module.exports = function(apiKey) {
         request.get(url + '/deleteAlertContact', {
             qs: _.extend({
                 apiKey: apiKey,
-                format: 'json'
+                format: 'json',
+                noJsonCallback: 1
             }, getQueryParams(options))
         }, function(err, res, body) {
             try {
-                var data = parseJSONResponse(body);
+                var data = JSON.parse(body);
                 process.nextTick(function() {
                     cb(data.stat === 'fail' ? data.message : null, data);
                 });

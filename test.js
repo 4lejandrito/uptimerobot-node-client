@@ -17,8 +17,8 @@ describe('Uptimerobot client', function() {
             var json = require('./responses/getMonitors');
 
             fakeApi.get('/getMonitors')
-            .query({apiKey: apiKey, format: 'json'})
-            .reply(200, 'jsonUptimeRobotApi(' + JSON.stringify(json) + ')');
+            .query({apiKey: apiKey, format: 'json', noJsonCallback: 1})
+            .reply(200, JSON.stringify(json));
 
             var client = new Client(apiKey);
 
@@ -36,6 +36,7 @@ describe('Uptimerobot client', function() {
             .query({
                 apiKey: apiKey,
                 format: 'json',
+                noJsonCallback: 1,
                 logs: 1,
                 alertContacts: 1,
                 responseTimes: 0,
@@ -43,7 +44,7 @@ describe('Uptimerobot client', function() {
                 monitors: '15830-32696',
                 customUptimeRatio: 30
             })
-            .reply(200, 'jsonUptimeRobotApi(' + JSON.stringify(json) + ')');
+            .reply(200, JSON.stringify(json));
 
             var client = new Client(apiKey);
 
@@ -69,8 +70,8 @@ describe('Uptimerobot client', function() {
             };
 
             fakeApi.get('/getMonitors')
-            .query({apiKey: apiKey, format: 'json'})
-            .reply(200, 'jsonUptimeRobotApi(' + JSON.stringify(json) + ')');
+            .query({apiKey: apiKey, format: 'json', noJsonCallback: 1})
+            .reply(200, JSON.stringify(json));
 
             var client = new Client(apiKey);
 
@@ -83,7 +84,7 @@ describe('Uptimerobot client', function() {
 
         it('fails with the error if the request fails', function(done) {
             fakeApi.get('/getMonitors')
-            .query({apiKey: apiKey, format: 'json'})
+            .query({apiKey: apiKey, format: 'json', noJsonCallback: 1})
             .reply(500, 'some weird error');
 
             var client = new Client(apiKey);
