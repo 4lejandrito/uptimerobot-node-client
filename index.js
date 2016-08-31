@@ -11,146 +11,34 @@ var getQueryParams = function(options) {
 
 var Client = module.exports = function(apiKey) {
 
-    var url = 'https://api.uptimerobot.com';
-    var commonParams = {
-        apiKey: apiKey,
-        format: 'json',
-        noJsonCallback: 1
+    var getRequest = function(path) {
+        return function(options, cb) {
+            if (!cb) cb = options;
+            request.get('https://api.uptimerobot.com' + path, {
+                qs: _.extend({
+                    apiKey: apiKey,
+                    format: 'json',
+                    noJsonCallback: 1
+                }, getQueryParams(options))
+            }, function(err, res, body) {
+                try {
+                    var data = JSON.parse(body);
+                    process.nextTick(function() {
+                        cb(data.stat === 'fail' ? data.message : null, data);
+                    });
+                } catch(ex) {
+                    cb(err || ex, body);
+                }
+            });
+        };
     };
 
-    this.getMonitors = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/getMonitors', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
-
-    this.newMonitor = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/newMonitor', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
-
-    this.editMonitor = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/editMonitor', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
-
-    this.deleteMonitor = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/deleteMonitor', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
-
-    this.resetMonitor = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/resetMonitor', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
-
-    this.getAlertContacts = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/getAlertContacts', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
-
-    this.newAlertContact = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/newAlertContact', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
-
-    this.deleteAlertContact = function(options, cb) {
-        if (!cb) cb = options;
-
-        request.get(url + '/deleteAlertContact', {
-            qs: _.extend(commonParams, getQueryParams(options))
-        }, function(err, res, body) {
-            try {
-                var data = JSON.parse(body);
-                process.nextTick(function() {
-                    cb(data.stat === 'fail' ? data.message : null, data);
-                });
-            } catch(ex) {
-                cb(err || ex, body);
-            }
-        });
-    };
+    this.getMonitors = getRequest('/getMonitors');
+    this.newMonitor = getRequest('/newMonitor');
+    this.editMonitor = getRequest('/editMonitor');
+    this.deleteMonitor = getRequest('/deleteMonitor');
+    this.resetMonitor = getRequest('/resetMonitor');
+    this.getAlertContacts = getRequest('/getAlertContacts');
+    this.newAlertContact = getRequest('/newAlertContact');
+    this.deleteAlertContact = getRequest('/deleteAlertContact');
 };
