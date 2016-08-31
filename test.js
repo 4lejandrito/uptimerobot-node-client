@@ -89,10 +89,90 @@ describe('Uptimerobot client', function() {
             var client = new Client(apiKey);
 
             client.getMonitors(function(err, response) {
-                assert.instanceOf(err, TypeError);
+                assert.instanceOf(err, SyntaxError);
                 assert.equal(response, 'some weird error');
                 done();
             });
+        });
+    });
+
+    // @TODO implement tests
+    describe('addMonitor', function() {
+        it('provides the json response', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('passes the options', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the api fails', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the request fails', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+    });
+
+    // @TODO implement tests
+    describe('editMonitor', function() {
+        it('provides the json response', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('passes the options', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the api fails', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the request fails', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+    });
+
+    // @TODO implement tests
+    describe('deleteMonitor', function() {
+        it('provides the json response', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('passes the options', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the api fails', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the request fails', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+    });
+
+    // @TODO implement tests
+    describe('resetMonitor', function() {
+        it('provides the json response', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('passes the options', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the api fails', function(done) {
+            assert.equal(1, 1);
+            done();
+        });
+        it('fails with the error if the request fails', function(done) {
+            assert.equal(1, 1);
+            done();
         });
     });
 });
