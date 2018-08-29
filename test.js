@@ -2,10 +2,54 @@ var assert = require('chai').assert;
 var Client = require('./index');
 var nock = require('nock');
 
+describe('Uptimerobot client hitting the real API', function() {
+
+  it('fails when the api key is in a wrong format', function(done) {
+      var client = new Client('wrongformat');
+      var expectedResponse = {
+        stat: 'fail',
+        id: '100',
+        message: 'apiKey not mentioned or in a wrong format'
+      }
+      client.getMonitors(function(err, response) {
+          assert.equal(err, expectedResponse.message);
+          assert.deepEqual(response, expectedResponse);
+          done();
+      });
+  });
+
+  it('fails when the api key is wrong', function(done) {
+      var client = new Client('u123456-000000000000000000000000');
+      var expectedResponse = {
+        stat: 'fail',
+        id: '101',
+        message: 'apiKey is wrong'
+      }
+      client.getMonitors(function(err, response) {
+          assert.equal(err, expectedResponse.message);
+          assert.deepEqual(response, expectedResponse);
+          done();
+      });
+  });
+
+  it('fails when the api key is not set', function(done) {
+      var client = new Client();
+      client.getMonitors(function(err, response) {
+          assert.isNotNull(err);
+          assert.deepEqual(response, 'An error occurred on the server when processing the URL. Please contact the system administrator. <p/> If you are the system administrator please click <a href="http://go.microsoft.com/fwlink/?LinkID=82731">here</a> to find out more about this error.');
+          done();
+      });
+  });
+});
+
 describe('Uptimerobot client', function() {
 
-    var fakeApi = nock('https://api.uptimerobot.com');
+    var fakeApi;
     var apiKey = 'theapikey';
+
+    before(function() {
+      fakeApi = nock('https://api.uptimerobot.com');
+    })
 
     afterEach(function() {
         fakeApi.done();
