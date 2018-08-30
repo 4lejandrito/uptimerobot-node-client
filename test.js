@@ -34,9 +34,14 @@ describe('Uptimerobot client hitting the real API', function() {
 
   it('fails when the api key is not set', function(done) {
       var client = new Client();
+      var expectedResponse = {
+        stat: 'fail',
+        id: '100',
+        message: 'apiKey not mentioned or in a wrong format'
+      }
       client.getMonitors(function(err, response) {
-          assert.isNotNull(err);
-          assert.deepEqual(response, 'An error occurred on the server when processing the URL. Please contact the system administrator. <p/> If you are the system administrator please click <a href="http://go.microsoft.com/fwlink/?LinkID=82731">here</a> to find out more about this error.');
+          assert.equal(err, expectedResponse.message);
+          assert.deepEqual(response, expectedResponse);
           done();
       });
   });
